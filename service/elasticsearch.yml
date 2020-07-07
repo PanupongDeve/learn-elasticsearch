@@ -1,0 +1,8 @@
+cluster.name: "docker-cluster"
+network.host: 0.0.0.0
+bootstrap.memory_lock: false
+xpack.security.enabled: false
+xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.verification_mode: certificate
+xpack.security.transport.ssl.keystore.path: my_cert
+xpack.security.transport.ssl.truststore.path: my_cert
