@@ -72,6 +72,18 @@ services:
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
 
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.8.0
+    container_name: logstash
+    ports:
+      - 5044:5044
+      - 9600:9600
+    networks:
+      - elastic
+    volumes:
+      - ./logstash/pipeline/:/usr/share/logstash/pipeline/
+      - ./logstash/config:/usr/share/logstash/config/
+
 volumes:
   data01:
     driver: local
