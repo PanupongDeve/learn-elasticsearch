@@ -78,11 +78,13 @@ services:
     ports:
       - 5044:5044
       - 9600:9600
+      - 5043:5043
     networks:
       - elastic
     volumes:
       - ./logstash/pipeline/:/usr/share/logstash/pipeline/
       - ./logstash/config:/usr/share/logstash/config/
+      - ./logstash/data/test.txt:/usr/share/logstash/data/test.txt
 
 volumes:
   data01:
