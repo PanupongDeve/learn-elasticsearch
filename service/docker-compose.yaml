@@ -85,6 +85,18 @@ services:
       - ./logstash/pipeline/:/usr/share/logstash/pipeline/
       - ./logstash/config:/usr/share/logstash/config/
       - ./logstash/data/test.txt:/usr/share/logstash/data/test.txt
+  
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.8.0
+    container_name: filebeat
+    networks:
+      - elastic
+    volumes:
+      - filebeat:/usr/share/filebeat/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers/:/var/lib/docker/containers/:ro
+      - ./filebeat/log/:/var/log/:ro
+      - ./filebeat/filebeat.yml/:/usr/share/filebeat/filebeat.yml
 
 volumes:
   data01:
@@ -92,6 +104,8 @@ volumes:
   data02:
     driver: local
   data03:
+    driver: local
+  filebeat:
     driver: local
 
 networks:
